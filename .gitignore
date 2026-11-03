@@ -1,0 +1,16 @@
+# secrets
+.env
+.env.*
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# local state (the real state lives on the `state` branch)
+state-data/
+state.json
+state.corrupt.json
+
+.DS_Store
