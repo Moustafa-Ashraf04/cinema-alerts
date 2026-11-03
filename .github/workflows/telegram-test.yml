@@ -1,0 +1,27 @@
+name: telegram-test
+
+# One-off, manual: checks that the Telegram secrets work from GitHub's runners.
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Send "Cinema bot connected"
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          # Print only the HTTP status and Telegram's ok flag, never the URL or body.
+          status=$(curl -s -o resp.json -w '%{http_code}' --max-time 10 \
+            --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+            --data-urlencode "text=Cinema bot connected" \
+            "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage")
+          ok=$(jq -r '.ok' resp.json 2>/dev/null || echo unknown)
+          rm -f resp.json
+          echo "HTTP ${status}, ok=${ok}"
+          [ "$status" = "200" ] && [ "$ok" = "true" ]
