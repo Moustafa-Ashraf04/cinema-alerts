@@ -1,0 +1,169 @@
+{
+  "entries": {
+    "avengers-doomsday|scene-cfc|2026-12-23": {
+      "errors": 0,
+      "first_open": "2026-11-04T02:12:51+00:00",
+      "problem_alerted": false,
+      "showtimes": [
+        {
+          "format": "ScreenX",
+          "sold_out": false,
+          "time": "12:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae28d8693ab5e6f3c456044"
+        },
+        {
+          "format": "ScreenX",
+          "sold_out": false,
+          "time": "04:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae28d8693ab5e6f3c456042"
+        },
+        {
+          "format": "ScreenX",
+          "sold_out": false,
+          "time": "08:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae28d8693ab5e6f3c456045"
+        },
+        {
+          "format": "ScreenX",
+          "sold_out": false,
+          "time": "12:00 AM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae28d8693ab5e6f3c456043"
+        }
+      ],
+      "status": "OPEN",
+      "titles": [
+        "Avengers: Doomsday"
+      ]
+    },
+    "avengers-doomsday|scene-district5|2026-12-23": {
+      "errors": 0,
+      "first_open": "2026-11-04T02:12:51+00:00",
+      "problem_alerted": false,
+      "showtimes": [
+        {
+          "format": "Standard & Deluxe",
+          "sold_out": false,
+          "time": "12:00 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae36d14e95f9a06741a33e7"
+        },
+        {
+          "format": "Standard & Deluxe",
+          "sold_out": false,
+          "time": "04:00 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae36d14e95f9a06741a33e6"
+        },
+        {
+          "format": "Standard & Deluxe",
+          "sold_out": false,
+          "time": "08:00 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae36d14e95f9a06741a33e8"
+        },
+        {
+          "format": "Standard & Deluxe",
+          "sold_out": false,
+          "time": "11:45 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae36d14e95f9a06741a33e9"
+        }
+      ],
+      "status": "OPEN",
+      "titles": [
+        "Avengers: Doomsday"
+      ]
+    },
+    "dune3|scene-cfc|2026-12-23": {
+      "errors": 0,
+      "first_open": "2026-11-04T02:12:51+00:00",
+      "problem_alerted": false,
+      "showtimes": [
+        {
+          "format": "Standard",
+          "sold_out": false,
+          "time": "12:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae4ea6b93ab5e6f3c48b4e1"
+        },
+        {
+          "format": "Standard",
+          "sold_out": false,
+          "time": "03:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae4ea6b93ab5e6f3c48b4e2"
+        },
+        {
+          "format": "Standard",
+          "sold_out": false,
+          "time": "06:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae4ea6b93ab5e6f3c48b4e3"
+        },
+        {
+          "format": "Standard",
+          "sold_out": false,
+          "time": "09:00 PM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae4ea6b93ab5e6f3c48b4e4"
+        },
+        {
+          "format": "Standard",
+          "sold_out": false,
+          "time": "12:00 AM",
+          "url": "https://cfc.scenecinemas.com/showtime-6ae4ea6b93ab5e6f3c48b4e0"
+        }
+      ],
+      "status": "OPEN",
+      "titles": [
+        "Dune: Part Three"
+      ]
+    },
+    "dune3|scene-district5|2026-12-23": {
+      "errors": 0,
+      "first_open": "2026-11-04T02:12:51+00:00",
+      "problem_alerted": false,
+      "showtimes": [
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "10:30 AM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6943"
+        },
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "01:15 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6946"
+        },
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "04:00 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6944"
+        },
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "07:00 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6945"
+        },
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "09:45 PM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6948"
+        },
+        {
+          "format": "IMAX",
+          "sold_out": false,
+          "time": "12:30 AM",
+          "url": "https://district5.scenecinemas.com/showtime-6ae4e904e95f9a06741b6947"
+        }
+      ],
+      "status": "OPEN",
+      "titles": [
+        "Dune: Part Three"
+      ]
+    }
+  },
+  "keepalive": "2026-11-04T02:13:02Z",
+  "last_check": "2026-11-04T02:12:51+00:00",
+  "last_heartbeat": null,
+  "next_watch_no": 1,
+  "telegram_offset": 203713832,
+  "version": 1,
+  "watches": []
+}
