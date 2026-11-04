@@ -1,0 +1,1774 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="csrf-token" content="REDACTED" />
+	<title>Scene Cinemas</title>    <meta name="description" content="Your Ticket to a world of cinematic wonders.">	<meta name="theme-color" content="black">
+	<link rel="icon" type="image/png" href="https://cfc.scenecinemas.com/nextjs-assets/bookmark.png ">
+	<link href="https://cfc.scenecinemas.com/nextjs-assets/theme/css/theme-43f59d19bc9a4cd37b8e888bffa445da.css?initTime=1793757203" rel="stylesheet">
+	<meta name="facebook-domain-verification" content="axao2jic842o8m071eipoqci5a1orh" />	
+	<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+	
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5BCXF9GM');</script>
+<!-- End Google Tag Manager -->
+<script>
+window.scGtm = {
+  site: "cfc",
+  currency: "EGP"};
+window.scPush = function (eventName, ecommerce, extra) {
+  extra = extra || {};
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ ecommerce: null });
+  var payload = {
+    event: eventName,
+    site: window.scGtm.site,
+    ecommerce: ecommerce || {}
+  };
+  ['branch_name', 'movie_name', 'seat'].forEach(function (key) {
+    if (extra[key]) {
+      payload[key] = extra[key];
+    }
+  });
+  window.dataLayer.push(payload);
+};
+window.scSeatEvent = function (eventName, seatName, seatId) {
+  if (!window.scPush) return;
+  var booking = window.scBooking || {};
+  window.scPush(eventName, {
+    currency: window.scGtm.currency,
+    items: [{
+      item_id: String(seatId || seatName || ''),
+      item_name: booking.movie_name || '',
+      item_brand: booking.branch_name || '',
+      item_variant: seatName || '',
+      item_category: 'ticket',
+      quantity: 1
+    }]
+  }, {
+    branch_name: booking.branch_name || '',
+    movie_name: booking.movie_name || '',
+    seat: seatName || ''
+  });
+};
+window.scCartEvent = function (eventName) {
+  if (!window.scPush) return;
+  var node = document.getElementById('gtm-cart');
+  if (!node) return;
+  var cart;
+  try { cart = JSON.parse(node.textContent || '{}'); } catch (e) { return; }
+  window.scCart = cart;
+  window.scPush(eventName, {
+    currency: cart.currency || window.scGtm.currency,
+    value: cart.value || 0,
+    items: cart.items || []
+  }, {
+    branch_name: cart.branch_name || '',
+    movie_name: cart.movie_name || ''
+  });
+};
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-56Y0TS6WVR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-56Y0TS6WVR');
+</script>
+
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1125520025237838');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1125520025237838&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+  </head>
+  
+  <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BCXF9GM"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  <div class="navgitor">  
+	<div class="glxhead   ">
+   <nav class="navbar navbar-expand-md navbar-dark" id="main-nav">
+      <div class="container mt-1">
+         <a class="navbar-brand text-center" href="https://cfc.scenecinemas.com/home">
+		 			 <img class="logo animate__animated animate__fadeIn" src="https://cfc.scenecinemas.com/nextjs-assets/theme/img/scenelight.png"></a>		 
+         <button class="navbar-toggler" style="border:0px;padding: 0px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+         <i class="bi bi-list" style="font-size: 34px;color: #fff;margin-top: -11px;"></i>
+         </button>
+		 <div class="clearfix"></div>
+		  <div class="clearfix"></div>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+			
+			
+               <li class="nav-item animate__animated animate__fadeIn">
+                  <a class="nav-link" href="https://cfc.scenecinemas.com/home">Home</a>
+               </li>
+              
+			   
+			   <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Movies </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/home">Now Showing</a></li>
+                    <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/next_releasing">Coming Soon</a></li>
+                </ul>
+            </li>
+			
+			<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Experiences </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+				
+				
+				      				    <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/experiences/cfc/standard.html">Standard</a></li>	
+					<li><a class="dropdown-item" href="https://cfc.scenecinemas.com/experiences/cfc/premiere.html">Premiere</a></li>
+                    <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/experiences/cfc/screenx.html">ScreenX</a></li>
+                    <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/experiences/cfc/4dx.html">4DX</a></li>
+   
+	
+                    
+					
+                </ul>
+            </li>
+			
+			<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdownMenuLink3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Food & Drinks </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+				
+				
+				 				      <li><a class="dropdown-item" href="https://cfc.scenecinemas.com/food-and-drinks-cfc.html">Concessions Menu</a></li>	
+					<li><a class="dropdown-item" href="https://cfc.scenecinemas.com/dine-in-cfc.html">Dine-In Menu</a></li>
+                
+				  				
+					
+                </ul>
+            </li>
+			
+			
+			
+			
+			<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="javascript:void(0);" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Locations </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                    <li><a class="dropdown-item" href="https://district5.scenecinemas.com">District 5</a></li>
+					<li><a class="dropdown-item" href="https://cfc.scenecinemas.com">Cairo Festival City</a></li>
+                </ul>
+            </li>
+			
+			
+			
+
+            </ul> 
+           
+         </div>
+		 
+		 <style>
+.SelectBranchPass {
+	color: white;
+	font-size: 14px;
+	padding: 10px;
+	margin-right: 10px;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	border: 1px solid #94929A42;
+	border-radius: 6px;
+}
+.SelectBranchPassFotter {
+	color: white;
+	font-size: 14px;
+	padding: 10px;
+	padding-right: 15px;
+	padding-left: 15px;
+	font-weight: bold;
+	cursor: pointer;
+	border: 1px solid #94929A42;
+	border-radius: 6px;
+	width: auto;
+	float: right;
+}
+
+.SelectBranchPass:hover {
+	background: #94929A42;
+}
+		 .SelectBranchPassMobile {
+	display: none !important;
+}
+@media only screen and (max-width: 600px) {
+	 .SelectBranchPass {display: none !important;}
+.SelectBranchPassMobile {
+	display: block !important;
+	text-align: center;
+	border-top: 1px solid #94929A42;
+	border-bottom: 1px solid #94929A42;
+	color: #fff;
+	margin: 0px;
+	padding: 8px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 3px;
+}
+
+.SelectBranchPassFotter {
+	float: none;
+	margin: 0 auto;
+}
+
+}
+		 </style>
+		  <div data-bs-toggle="modal" data-bs-target="#LocationModal" class="d-flex SelectBranchPass animate__animated animate__fadeIn" id="">
+           <i class="bi bi-geo-alt-fill"></i> &nbsp; Cairo Festival City		   
+		    &nbsp; <i class="bi bi-chevron-down"></i>
+		   
+            </div>
+			
+		    <div class="d-flex glxaccess animate__animated animate__fadeIn" id="loginAreaPass">
+
+            </div>
+      </div>
+   </nav>
+   
+    <div class="clearfix"></div>
+	
+  		  <div data-bs-toggle="modal" data-bs-target="#LocationModal" class="d-flex SelectBranchPassMobile animate__animated animate__fadeIn" id="">
+           <i class="bi bi-geo-alt-fill"></i> &nbsp;Cairo Festival City		    &nbsp; <i class="bi bi-chevron-down"></i>
+            </div> 
+   <div class="container glxslider">
+   <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+         <!-- Slides -->
+		 
+		  
+		 
+<div class="swiper-slide spm" style="background:url('https://statics.scenecinemas.com/banners/banner_64bb3b402b613a54c30cf933_1793319688.jpg');">
+   <div class="slidermv">
+    
+      <h1 class="genere">
+	              <span class="rating-movie">18+</span>
+          
+         Action
+      </h1>
+	    <h1 class="title"> Avengers: Doomsday  </h1>
+     
+				    
+      <span class="desc" > Heroes from three different worlds must unite when they&#039;re thrust together to confront a catastrophic danger that could destroy everything they know. </span>
+      <div class="controls">
+                                    <a href="https://cfc.scenecinemas.com/movie-details/avengers-doomsday-infinity-vision-sx-4dx.html" title="Avengers: Doomsday" class="universal_button tailcolor">Advanced Booking</a>	 
+         	 
+                  <a data-fslightbox="gallery" href="https://www.youtube.com/watch?v=AhkUPwqb6yU&autoplay=1" class="universal_button"><i class="bi bi-play-fill"></i> Play Trailer</a>
+      </div>
+   </div>
+</div>
+       
+		 
+<div class="swiper-slide spm" style="background:url('https://statics.scenecinemas.com/banners/banner_64bb3b402b613a54c30cf933_1793386849.jpg');">
+   <div class="slidermv">
+    
+      <h1 class="genere">
+	              <span class="rating-movie">18+</span>
+          
+         Action | Sci-Fi
+      </h1>
+	    <h1 class="title"> Dune: Part Three  </h1>
+     
+				    
+      <span class="desc" > Emperor Paul Atreides faces the fallout from his ascent to power as political plots and a galaxy-wide holy war endanger the future only he can see. </span>
+      <div class="controls">
+                                    <a href="https://cfc.scenecinemas.com/movie-details/dune-part-three.html" title="Dune: Part Three" class="universal_button tailcolor">Advanced Booking</a>	 
+         	 
+                  <a data-fslightbox="gallery" href="https://www.youtube.com/watch?v=HWdM0HUTFAE&autoplay=1" class="universal_button"><i class="bi bi-play-fill"></i> Play Trailer</a>
+      </div>
+   </div>
+</div>
+       
+		 
+<div class="swiper-slide spm" style="background:url('https://statics.scenecinemas.com/banners/banner_64bb3b402b613a54c30cf933_1792167297.jpg');">
+   <div class="slidermv">
+    
+      <h1 class="genere">
+	              <span class="rating-movie">PG</span>
+          
+         Comedy | Romance
+      </h1>
+	    <h1 class="title"> Wala Kan Ala Albal  </h1>
+     
+				    
+      <span class="desc" > In the heart of the enchanting city of Luxor, Hassan finds himself on an unexpected romantic comedy adventure when he takes charge of a multinational tourist group. As he struggles to communicate with them in four different languages, he unexpectedly falls in love with a girl amid the ancient temples. What follows is a series of hilarious situations and surprises that prove the language of the heart is the strongest and most sincere of all, no matter how different our languages may be. </span>
+      <div class="controls">
+                           <a href="https://cfc.scenecinemas.com/movie-details/wala-kan-ala-albal.html" title="Wala Kan Ala Albal" class="universal_button tailcolor">Book Now</a>
+                  <a data-fslightbox="gallery" href="https://www.youtube.com/watch?v=4iA8LKCerTk&autoplay=1" class="universal_button"><i class="bi bi-play-fill"></i> Play Trailer</a>
+      </div>
+   </div>
+</div>
+       
+		 
+<div class="swiper-slide spm" style="background:url('https://statics.scenecinemas.com/banners/banner_64bb3b402b613a54c30cf933_1790443389.jpg');">
+   <div class="slidermv">
+    
+      <h1 class="genere">
+	              <span class="rating-movie">12+</span>
+          
+         Comedy
+      </h1>
+	    <h1 class="title"> Matloub Aelyan  </h1>
+     
+				    
+      <span class="desc" > The film follows an Interpol agent who takes on a complex joint mission with one of his female colleagues. During the mission, he is forced to encounter unexpected characters, setting off a series of situations, crises, and unforeseen twists. </span>
+      <div class="controls">
+                           <a href="https://cfc.scenecinemas.com/movie-details/matloub-aelyan.html" title="Matloub Aelyan" class="universal_button tailcolor">Book Now</a>
+                  <a data-fslightbox="gallery" href="https://www.youtube.com/watch?v=ACbIlT7optg&autoplay=1" class="universal_button"><i class="bi bi-play-fill"></i> Play Trailer</a>
+      </div>
+   </div>
+</div>
+       
+		 
+<div class="swiper-slide spm" style="background:url('https://statics.scenecinemas.com/banners/banner_64bb3b402b613a54c30cf933_1784833308.jpg');">
+   <div class="slidermv">
+    
+      <h1 class="genere">
+	              <span class="rating-movie">12+</span>
+          
+         Action
+      </h1>
+	    <h1 class="title"> Spider-Man: Brand New Day  (2D)  </h1>
+     
+				    
+      <span class="desc" > It&#039;s a BRAND NEW DAY for Peter Parker. Fighting crime full-time as Spider-Man in a world that doesn’t remember him -- and the pressure of seeing his old friends move on without him -- sparks a change in Peter he may not have the power to control. But that transformation might also be the only thing that can stop a shocking new threat to the city and those he loves - a powerful villain no one can even see. </span>
+      <div class="controls">
+                           <a href="https://cfc.scenecinemas.com/movie-details/spider-man-brand-new-day.html" title="Spider-Man: Brand New Day  (2D)" class="universal_button tailcolor">Book Now</a>
+                  <a data-fslightbox="gallery" href="https://www.youtube.com/watch?v=mM2HFFDTBoQ&autoplay=1" class="universal_button"><i class="bi bi-play-fill"></i> Play Trailer</a>
+      </div>
+   </div>
+</div>
+      
+
+      </div>
+      <!-- If we need pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- If we need scrollbar -->
+   </div>
+   <div thumbsSlider="" class="mySwiper">
+      <div class="swiper-wrapper">
+	    
+         <div class="swiper-slide" style="background-image:url('https://statics.scenecinemas.com/banners/banner_thumb_64bb3b402b613a54c30cf933_1793319688.jpg');background-position: center;background-size: cover;">
+            <div class="mixmode">
+			<div class="thumbstext"> Avengers: Doomsday </div>
+			</div>
+         </div>
+	    
+         <div class="swiper-slide" style="background-image:url('https://statics.scenecinemas.com/banners/banner_thumb_64bb3b402b613a54c30cf933_1793386849.png');background-position: center;background-size: cover;">
+            <div class="mixmode">
+			<div class="thumbstext"> Dune: Part Three </div>
+			</div>
+         </div>
+	    
+         <div class="swiper-slide" style="background-image:url('https://statics.scenecinemas.com/banners/banner_thumb_64bb3b402b613a54c30cf933_1792167297.jpg');background-position: center;background-size: cover;">
+            <div class="mixmode">
+			<div class="thumbstext"> Wala Kan Ala Albal </div>
+			</div>
+         </div>
+	    
+         <div class="swiper-slide" style="background-image:url('https://statics.scenecinemas.com/banners/banner_thumb_64bb3b402b613a54c30cf933_1790443389.jpg');background-position: center;background-size: cover;">
+            <div class="mixmode">
+			<div class="thumbstext"> Matloub Aelyan </div>
+			</div>
+         </div>
+	    
+         <div class="swiper-slide" style="background-image:url('https://statics.scenecinemas.com/banners/banner_thumb_64bb3b402b613a54c30cf933_1784833308.jpg');background-position: center;background-size: cover;">
+            <div class="mixmode">
+			<div class="thumbstext"> Spider-Man: Brand New Day  (2D) </div>
+			</div>
+         </div>
+	   	 
+	   
+      </div>
+   </div>
+</div>
+<div class="clearfix"></div>
+<div class="sliderSpace"></div>
+</div>
+    <div class="clearfix"></div>
+    	
+<div class="container">
+<div class="glx_section">
+<div class="glx_section_head mb-2">
+
+<div class="row m-0 p-0">
+<div class="col-7 col-lg-10 p-0 m-0"><h1>Now Showing</h1></div>
+<div class="col-5 col-lg-2 p-0 m-0">
+<div class="select-btn">
+                <span class="btn-text"><img class="bxseat" src="https://cfc.scenecinemas.com/nextjs-assets/theme/img/seat.png"> Experiences</span>
+                <span class="arrow-dwn">
+                    <i class="bi bi-chevron-down"></i>
+                </span>
+            </div>
+            <ul class="list-items">
+			
+			                  <li class="item" onclick="checkFilterItem('vue_screenx')">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">ScreenX</span>
+                </li>
+                <li class="item" onclick="checkFilterItem('vue_4dx')">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">4DX</span>
+                </li>
+                <li class="item" onclick="checkFilterItem('vue_cfc_deluxe')">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Deluxe</span>
+                </li>
+      
+
+
+                <li class="item" onclick="checkFilterItem('vue_prem')">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Premiere</span>
+                </li>
+                <li class="item" onclick="checkFilterItem('vue_stand')">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Standard</span>
+                </li>
+				             </ul>
+</div>
+</div>
+
+</div>
+
+<script>
+
+</script>
+<input type="hidden" name="chk_imax" id="chk_vue_imax" value="NO">
+<input type="hidden" name="chk_prem" id="chk_vue_prem" value="NO">
+<input type="hidden" name="chk_screenx" id="chk_vue_screenx" value="NO">
+<input type="hidden" name="chk_4dx" id="chk_vue_4dx" value="NO">
+<input type="hidden" name="chk_cfc_deluxe" id="chk_vue_cfc_deluxe" value="NO">
+<input type="hidden" name="chk_stand" id="chk_vue_stand" value="NO">
+<input type="hidden" name="chk_vue_deluxe" id="chk_vue_deluxe" value="NO">
+<ul class="film-cards-list">
+
+   
+ 
+ <li class="film-cards-list-item active        vue_prem " id="data_3" onmouseover="addEffect('3')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/hope-korean.html" title="Hope" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp4">16+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/1GcrJ8st6suUTvkCnf4SmjfWEtPSRA5GPTOaLHHq.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Hope  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_prem " id="data_6" onmouseover="addEffect('6')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/naseeb-arabic.html" title="Naseeb" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/KLZz7bwiyIMoQPtZak0CZXuPomNASsjWUfsFcI2v.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Naseeb  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_prem " id="data_4" onmouseover="addEffect('4')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/sense-and-sensibility.html" title="Sense and Sensibility" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/oTFKrOXL699aWJyfazMwC37Q8yK0LuvSE2lJsIcS.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Sense and Sensibility  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active     vue_4dx   vue_cfc_deluxe    vue_stand " id="data_7" onmouseover="addEffect('7')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/wildwood.html" title="Wildwood" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp1">PG</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/whTkceHYxHNesGutplFgUX09Z6yeepsG79wg2EW9.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Wildwood  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active    vue_screenx   vue_4dx   vue_cfc_deluxe    vue_stand " id="data_8" onmouseover="addEffect('8')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/clayface.html" title="Clayface" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/QJdFG0VoutWOkCn8chAMqlNaBQihU7w90mc3EXd2.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  			  			<div class="glxmovierateScreenX"> 
+					                 <span class="sp3"><img style="width:100px;" src="https://cfc.scenecinemas.com/nextjs-assets/screenx/sx750.png"></span>
+
+                           </div>
+						   		
+				
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Clayface  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_prem " id="data_11" onmouseover="addEffect('11')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/wala-kan-ala-albal.html" title="Wala Kan Ala Albal" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp1">PG</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/Eu1iNtAuEvFHRoH7PQwFFaIkVmkxUK2zAZtY5hNU.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Wala Kan Ala Albal  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_prem " id="data_13" onmouseover="addEffect('13')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/matloub-aelyan.html" title="Matloub Aelyan" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/V5GuNSLwtwtOxCm8RwVPawJf8gSguOHltUiGrl3m.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Matloub Aelyan  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_stand " id="data_0" onmouseover="addEffect('0')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/moscow-cairo.html" title="Moscow Cairo" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/yH5yxoEmIwqimpf4Z69bC0N1BWLospxbfVnocnP4.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Moscow Cairo  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_stand " id="data_5" onmouseover="addEffect('5')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/the-mongoose.html" title="The Mongoose" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/CarEzEDT2RuFdFUPcA3gYXdfk5iMZcTZEo9K5wZM.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   The Mongoose  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_stand " id="data_1" onmouseover="addEffect('1')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/it-feeds.html" title="It Feeds" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/ksZzmWcrwGUbdYLqhTGYn3M6woRG65wLR69J72BS.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   It Feeds  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_stand " id="data_2" onmouseover="addEffect('2')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/the-influencer-project.html" title="The Influencer Project" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/5NoRZoETnluYyKX1EYwNBtxKeZ9vRGhtmQu6yuGj.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   The Influencer Project  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active        vue_stand " id="data_9" onmouseover="addEffect('9')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/whalefall.html" title="Whalefall" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/xkQViv5eIF1LFBC7Z7ZHjXDMBU0xdkkHh4JwdfRt.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Whalefall  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_10" onmouseover="addEffect('10')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/other-mommy.html" title="Other Mommy" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/SvJ8dB4Dr9YEaC029A8cu77g34HCY6X4QbRjQxKd.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Other Mommy  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_14" onmouseover="addEffect('14')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/digger.html" title="Digger" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/zkrQqjdG7sjyg73wNeeTjVdPj5WZXCifUFZ5JPug.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Digger  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_12" onmouseover="addEffect('12')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/verity.html" title="Verity" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/EceFX5MUFln09injzqxfn7Tg7Op3bXbjRAEanfL7.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Verity  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_15" onmouseover="addEffect('15')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/heart-of-the-beast.html" title="Heart of the Beast" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp3">12+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/HyYstTNwdrRiQ3ZEGiFLPTN3984FBFc2H0dhla6u.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Heart of the Beast  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_17" onmouseover="addEffect('17')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/resident_evil.html" title="Resident Evil" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp5">18+</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/OBBZo0FsLJfCmNKpynfcddrEqaMdKmWcuTXWd0w2.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Resident Evil  </h3>
+
+	 </div>
+   </div>
+ </li>
+    
+ 
+ <li class="film-cards-list-item active  glxHidden        vue_stand " id="data_16" onmouseover="addEffect('16')" onmouseleave="RemoveEffect()">
+  <div class="card" data-test="top-films-card-0">
+      <div class="card-img-box" data-test="top-films-card-0-image">
+	   <a href="https://cfc.scenecinemas.com/movie-details/mahmoud_eltany.html" title="Mahmoud Eltany" data-test="top-films-card-0-image-clickable">
+	    <div class="aspect-ratio" style="--aspect-ratio-height:149.14286%">
+		 <div class="aspect-ratio__container">
+		 			 <div class="glxmovierate"> 
+					                 <span class="sp1">PG</span>
+                           </div>
+		  <img class="lozad"  style="object-fit: contain;max-width: 100%;padding: 5px;" src="https://cfc.scenecinemas.com/nextjs-assets/def-image.jpg"  data-src="https://statics.scenecinemas.com/posters/8fOBtExEt8PzAr1LZQAmzpjbqBInJy3DXnZPJZaJ.jpg">
+		  </div></a>
+	  </div>
+	 <div class="card-body">
+	 
+	 	  
+ 	  	
+				
+				
+	 <h3 class="card-title" data-test="top-films-card-1-card-title">   Mahmoud Eltany  </h3>
+
+	 </div>
+   </div>
+ </li>
+   <ul>
+
+
+  
+</div>
+
+   <div class="text-center" id="viewallmovies"> <a class="universal_button borderwhite" href="javascript:_vue_view_all_movies();"><i class="bi bi-folder-plus"></i> All Movies</a> </div>
+    
+
+  
+ <div class="row  m-0 p-0 mt-3">
+ <div class="col-12 col-lg-12 p-0 m-0">
+ <div class="glx_section">
+ <div class="glx_section_head mb-2">
+ <h1 class="pt-1 mb-0">Experiences</h1>
+ </div></div>
+ </div> 
+ 
+ <div class="col-12 col-lg-12 p-0 m-0"><p style="color:white;font-size:13px;text-transform: uppercase;font-weight: bold;">At Scene Cinemas, We believe in creating unforgettable movie experiences rather than just screenings.</p></div>
+ <div class="col-6 col-lg-3 p-0 mb-2"><a href="https://cfc.scenecinemas.com/experiences/cfc/4dx.html"><img src="https://cfc.scenecinemas.com/nextjs-assets/exp/cf/seat5.png?op=91" style="max-width:100%;"></a></div>
+ <div class="col-6 col-lg-3 p-0 mb-2"><a href="https://cfc.scenecinemas.com/experiences/cfc/screenx.html"><img src="https://cfc.scenecinemas.com/nextjs-assets/exp/cf/seat1.png?op=91" style="max-width:100%;"></a></div>
+ <div class="col-6 col-lg-3 p-0 mb-2"><a href="https://cfc.scenecinemas.com/experiences/cfc/premiere.html"><img src="https://cfc.scenecinemas.com/nextjs-assets/exp/cf/seat2.png?op=91" style="max-width:100%;"></a></div>
+ <div class="col-6 col-lg-3 p-0 mb-2"><a href="https://cfc.scenecinemas.com/experiences/cfc/standard.html"><img src="https://cfc.scenecinemas.com/nextjs-assets/exp/cf/seat4.png?op=91" style="max-width:100%;"></a></div>
+	
+ </div> 
+  
+ 
+
+ 
+</div>
+	
+	<div class="clearfix"></div>
+	<div class="glxfoot mt-5">
+	
+	
+	
+	
+	<section class="footers pt-3 pb-3" style="background-color:#000;" >
+   <div class="container pt-5 mb-3">
+      <div class="row">
+         <div class="col-xs-12 col-sm-12 col-md-12 footers-one mb-5">
+            <h6 class="text-center"> Our Partners </h6>
+            <div class="footers-logo">
+               
+			    				  <div class="text-center mb-3"></div>
+			   <div class="text-center mb-3"> <img style="width:175px;" src="https://cfc.scenecinemas.com/nextjs-assets/screenx/sx750.png" style=""></div>
+               <div class="text-center">
+			      <img class=" part2" src="https://cfc.scenecinemas.com/nextjs-assets/partners/4dx.png" style="">
+                  <img class=" part2" src="https://cfc.scenecinemas.com/nextjs-assets/partners/1.png" style="">
+                  <img class=" part3" src="https://cfc.scenecinemas.com/nextjs-assets/partners/7.png" style="">
+                
+               </div>
+                				
+               
+            </div>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-md-3 footers-two">
+            <h5>  GET IN TOUCH </h5>
+            <ul class="list-unstyled fmenu">
+               <li><a href="https://cfc.scenecinemas.com/branches.html">Locations</a></li>
+               <li><a href="https://cfc.scenecinemas.com/contact_us.html">Contact US</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-md-3 footers-trhee">
+            <h5>  ABOUT SCENE CINEMAS </h5>
+            <ul class="list-unstyled fmenu">
+			
+			                    <li><a href="https://cfc.scenecinemas.com/about.html">About us</a></li>
+               <li><a href="https://cfc.scenecinemas.com/experiences/cfc/standard.html">Standard</a></li>
+               <li><a  href="https://cfc.scenecinemas.com/experiences/cfc/premiere.html">Premiere</a></li>
+               <li><a href="https://cfc.scenecinemas.com/experiences/cfc/screenx.html">ScreenX</a></li>
+			   <li><a href="https://cfc.scenecinemas.com/experiences/cfc/4dx.html">4DX</a></li>
+      
+   
+
+			 
+            </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-md-3 footers-four">
+            <h5> Legal </h5>
+            <ul class="list-unstyled fmenu">
+               <li><a href="https://cfc.scenecinemas.com/faq.html">FAQs</a></li>
+               <li><a href="https://cfc.scenecinemas.com/terms.html">Terms & conditions</a></li>
+               <li><a href="https://cfc.scenecinemas.com/privacy-policy.html">Privacy Policy</a></li>
+               <li><a href="https://cfc.scenecinemas.com/support.html">Support</a></li>
+            </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-md-3 footers-five">
+            <h5>FOLLOW US</h5>
+            <div class="glxsocial animate__animated animate__fadeIn">
+               <a href="https://www.facebook.com/scenecinemas/"><i class="bi bi-facebook"></i> Facebook</a>
+               <a href="https://www.instagram.com/scenecinemaseg/?hl=en"><i class="bi bi-instagram"></i> Instagram</a>
+               <a href="https://www.tiktok.com/@scenecinemas"><i class="bi bi-tiktok"></i> Tiktok</a>
+               <a href="https://www.youtube.com/@SceneCinemas"><i class="bi bi-youtube"></i> Youtube</a>
+               <a href="https://eg.linkedin.com/company/scene-cinemas-egypt"><i class="bi bi-linkedin"></i> Linkedin</a>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="container">
+      <div class="row animate__animated animate__fadeIn">
+         <div class="col-12 text-center ">
+
+            <div class="footer-logo">
+               <img class="logoblt" src="https://cfc.scenecinemas.com/nextjs-assets/theme/img/logows2.png?v=11">
+               <div class="slogan-bottom">Your Ticket to a world of cinematic wonders.</div>
+			   
+			   		 
+			
+            </div>
+         </div>
+         <div class="col-12 fotterleft">
+            <div class="footer-copyright">
+			 <div class="row">
+			    <div class="col col-lg-6">    © SceneCinemas. All rights reserved.</div>
+				<div class="col  col-lg-6">
+				 <div data-bs-toggle="modal" data-bs-target="#LocationModal" class="SelectBranchPassFotter animate__animated animate__fadeIn" id="">
+           <i class="bi bi-geo-alt-fill"></i> &nbsp; Cairo Festival City		   
+		    &nbsp; <i class="bi bi-chevron-down"></i>
+		   
+            </div>
+				</div>
+			 </div>
+           
+            </div>
+         </div>
+      </div>
+   </div>
+   <button class="button back-to-top" type="button" id="myBtn" onclick="topFunction()" data-test="back-to-top-button">
+      <svg width="21px" height="21px" viewBox="0 0 12 23">
+         <path d="M5.99805 22L5.99805 6.59459" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+         <path d="M0.862793 1H11.1331" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+         <path d="M5.9278 6.01946L0.858398 11.0889" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+         <path d="M5.92773 6.01946L10.9971 11.0889" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+   </button>
+</section>
+
+
+
+
+
+
+</div>
+</div>
+
+<style>
+.cookie_note{
+  margin: 0 auto;
+  font-size: 13px;text-align: left !important;}
+ .noteByPass{ font-size: 13px;}
+ .location{	 
+border: 1px solid rgba(102, 102, 102, 1);
+  margin: 15px auto;
+  border-radius: 5px;
+  text-align: center;
+  padding:10px;
+  cursor: pointer;
+  color: #D1D1D2;
+ }
+ 
+  .location:hover{	 
+	 background: #D1D1D2;
+ }
+ 
+ 
+.location > .name{
+color: #000;
+font-weight: 700;
+font-size: 18px;
+line-height: 30px;
+letter-spacing: -0.32px;
+  }	 
+
+.location:hover > .name{
+color: #404040;
+  }	 
+  
+.location > .address{
+color: #000;
+font-weight: 600;
+font-size: 13px;
+line-height: 21px;
+
+  }
+
+.location:hover > .address{
+color: #404040;
+  }	 
+ 
+
+@media only screen and (max-width: 600px) {
+.cookie_note{width: 100%;}
+ .location{width: 100%;}	 
+ .location > .name{
+font-size: 18px;
+  }	 
+  .location > .address{
+font-size: 12px;
+  }	 
+}
+ 
+</style>
+
+
+<div class="modal" id="LocationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999999999999999999999;background-color: #0f0f0f;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      
+      <!-- Modal Header with Close Button -->
+      <div class="modal-header">
+        <h5 class="modal-title text-dark" style="font-weight: 700; text-transform: uppercase;">Change Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      
+      <div class="modal-body">
+        <div class="text-center mb-2">
+          <h6 class="text-dark">Please select your preferred branch below:</h6>
+        </div>
+
+        <a href="https://district5.scenecinemas.com">
+          <div class="location">
+            <div class="name"><i class="bi bi-geo-alt"></i> District 5</div>
+            <div class="address">District 5 Mall, Ain El Sokhna Road, New Cairo.</div>
+          </div>
+        </a>
+
+     <div class="warning-box p-3 my-3 rounded bg-warning-subtle border border-warning text-dark">
+  <div class="d-flex align-items-center mb-2">
+    <i class="bi bi-exclamation-triangle-fill me-2 text-warning"></i>
+    <strong>IMPORTANT:</strong>
+  </div>
+  <div>
+    All ticket bookings are final — no cancellations, exchanges, or refunds; please ensure you select and attend the correct branch.
+  </div>
+</div>
+
+ </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+<a href="https://cfc.scenecinemas.com/SelectBranchBack/scene-cairo-festival-city/set.html">
+<div class="location">
+ <div class="name"><i class="bi bi-geo-alt"></i> Cairo Festival City</div>
+ <div class="address">Cairo Festival City Mall, 5th settlement, New Cairo.</div>
+</div>
+</a>
+--> 
+
+<!-- Modal -->
+
+
+	  
+<div class="modal"  id="UserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+	  
+	  
+<div class="auth" id="login_area">
+   <p class="title"><i class="bi bi-people"></i> Login to your Account</p>
+   <form id="login-form">
+   <div class="row">
+      <div class="col-md-12 mb-3">
+         <label for="logacc_email" class="form-label">Email Address</label>
+         <input class="form-control" type="text" name="logacc_email" id="logacc_email" value="" required="" placeholder="">
+      </div>
+      <div class="col-md-12 mb-3">
+         <label for="logacc_password" class="form-label">Password</label>
+         <input type="password" id="logacc_password" name="logacc_password" class="form-control" placeholder="">
+      </div>
+      <div class="col-md-6 mb-3 ">
+         <a href="javascript:void(0);" onclick="loginUser()" class="linkbtn text-center">Login</a>
+      </div>
+      <div class="col-md-6 mb-3 text-center pt-3">
+         <a href="javascript:void(0);" onclick="slideToScreen('forgot_area')">Forgot Your Password?</a>
+      </div>
+      <div class="col-md-12 text-center  mb-3">
+         <a href="javascript:void(0);" onclick="slideToScreen('create_account_area')"><i class="bi bi-person-add"></i> Create a new account.</a>
+      </div>
+   </div>
+  </form> 
+</div>
+
+<div class="auth" id="forgot_area" style="display:none;">
+<form id="demo-form-forgot">
+   <p class="title"><i class="bi bi-people"></i> Forgot Your Password</p>
+   <div class="row">
+      <div class="col-md-12 mb-3">
+         <label for="fracc_email" class="form-label">Enter your email address below:</label>
+         <input class="form-control" type="text" name="fracc_email" id="fracc_email" value="" required="" placeholder="">
+      </div>
+	  	  <div class="col-md-12 mb-3">
+	  <div class="g-recaptcha" data-sitekey="6LfvY9YpAAAAAM4rUNok4qF-FDZk1oGkreSr6GYj"></div>
+       </div>
+      <div class="col-md-12 mb-3 ">
+         <a href="javascript:void(0);" onclick="fogrotpasswordact()" class="linkbtn text-center">Reset Password</a>
+      </div>
+   </div>
+</form>   
+</div>
+
+   
+<div class="auth" id="create_account_area" style="display:none;">
+   <p class="title"><i class="bi bi-people"></i> Create Account</p>
+   <form id="demo-form">
+   <div class="row">
+      <div class="col-md-12 mb-3">
+         <label for="cracc_email" class="form-label">Email Address</label>
+         <input class="form-control" type="text" name="cracc_email" id="cracc_email" value="" required="" placeholder="">
+      </div>
+      <div class="col-6 mb-3">
+         <label for="cracc_name" class="form-label">Your Name</label>
+         <input type="text" id="cracc_name" name="cracc_name" class="form-control" placeholder="">
+      </div>
+	  <div class="col-6 mb-3">
+         <label for="cracc_phone" class="form-label">Phone Number</label>
+         <input type="text" id="cracc_phone" name="cracc_phone" class="form-control" placeholder="">
+      </div>
+	   <div class="col-md-12 mb-3">
+         <label for="cracc_password" class="form-label">Password</label>
+         <input type="password" id="cracc_password" name="cracc_password" class="form-control" placeholder="">
+      </div>
+	  <div class="col-md-12 mb-3">
+	  <div class="g-recaptcha" data-sitekey="6LfvY9YpAAAAAM4rUNok4qF-FDZk1oGkreSr6GYj"></div>
+       </div>
+      <div class="col-md-12 mb-3 ">
+         <a href="javascript:void(0);" onclick="createUser()" class="linkbtn text-center">Create Account</a>
+      </div>
+      <div class="col-md-12 text-center  mb-3">
+         <a href="javascript:void(0);" onclick="slideToScreen('login_area')"><i class="bi bi-box-arrow-in-right"></i> Do you have an account? Login Now</a>
+      </div>
+   </div>
+   </form>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<aside class="ajax-loader-block" style="display:none;z-index:99999999999999999999999;">
+    
+        <figure>
+		<img class="img-responsive" src="https://cfc.scenecinemas.com/nextjs-assets/loading.png" alt="" width="50" height="50"></figure>
+    </aside>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+  <script src="https://cfc.scenecinemas.com/nextjs-assets/theme/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cfc.scenecinemas.com/nextjs-assets/theme/js/fslightbox.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+
+
+
+function _vue_view_all_movies()
+{
+	
+	$('.glxHidden').css('display','inherit');
+	$('#viewallmovies').css('display','none');
+}
+
+const selectBtn = document.querySelector(".select-btn"),
+      items = document.querySelectorAll(".item");
+
+selectBtn.addEventListener("click", () => {
+    selectBtn.classList.toggle("open");
+});
+
+items.forEach(item => {
+    item.addEventListener("click", () => {
+        item.classList.toggle("checked");
+
+        let checked = document.querySelectorAll(".checked"),
+            btnText = document.querySelector(".btn-text");
+
+            if(checked && checked.length > 0){
+                btnText.innerText = `${checked.length} Selected`;
+            }else{
+                btnText.innerHTML= '<img class="bxseat" src="https://cfc.scenecinemas.com/nextjs-assets/theme/img/seat.png"> Experiences';
+            }
+    });
+})
+
+
+  function addEffect(key)
+  {
+	$(".film-cards-list-item").removeClass('inactive');  
+	$(".film-cards-list-item").removeClass('active');
+	$(".film-cards-list-item").addClass('inactive');
+	$("#data_"+key).removeClass('inactive');
+	$("#data_"+key).addClass('active');
+  }
+  function RemoveEffect()
+  {
+	$(".film-cards-list-item").removeClass('inactive');
+    $(".film-cards-list-item").addClass('active');	
+  }
+  
+   $(function () {
+   	
+   	
+   	    var swiper = new Swiper(".mySwiper", {
+        centeredSlides: true,
+       centeredSlidesBounds: true, 
+       direction: "vertical",
+       slidesPerView: 3,
+	   spaceBetween: 2,
+	   allowTouchMove:false,
+	   height: 300,
+       watchSlidesVisibility: true,
+       watchSlidesProgress: true,
+       breakpoints: {
+         480: {
+           direction: "vertical",
+           slidesPerView: 2,
+		   height: 300,
+         }
+       }
+       });
+       var swiper2 = new Swiper(".swiper", {
+         loop: true,
+		 effect: "fade",
+         spaceBetween: 10,
+        direction: 'horizontal',
+         thumbs: {
+           swiper: swiper,
+         },
+		        breakpoints: {
+         480: {
+
+         }
+       }
+       });
+   
+   
+   });
+   
+ 
+ 
+ function checkFilterItem(filter_id)
+{
+	var getFilterValue = $("#chk_"+filter_id).val();
+	if(getFilterValue == 'NO')
+	{
+	$("#chk_"+filter_id).val('YES');	
+	}
+	else
+	{
+	$("#chk_"+filter_id).val('NO');	
+	}
+	
+	var FilterPhase1 = $("#chk_vue_imax").val();
+	var FilterPhase2 = $("#chk_vue_prem").val();
+	var FilterPhase3 = $("#chk_vue_stand").val();
+	var FilterPhase4 = $("#chk_vue_deluxe").val();
+	var FilterPhase5 = $("#chk_vue_screenx").val();
+	var FilterPhase6 = $("#chk_vue_4dx").val();
+	var FilterPhase7 = $("#chk_vue_cfc_deluxe").val();
+	
+	
+	$(".film-cards-list-item").css('display','none');
+	
+	if(FilterPhase1 == 'YES')
+	{
+	$(".vue_imax").css('display','flex');	
+	}
+	if(FilterPhase2 == 'YES')
+	{
+	$(".vue_prem").css('display','flex');	
+	}
+   if(FilterPhase3 == 'YES')
+	{
+	$(".vue_stand").css('display','flex');	
+	}
+	 if(FilterPhase4 == 'YES')
+	{
+	$(".vue_deluxe").css('display','flex');	
+	}
+	
+		 if(FilterPhase5 == 'YES')
+	{
+	$(".vue_screenx").css('display','flex');	
+	}
+
+		 if(FilterPhase6 == 'YES')
+	{
+	$(".vue_4dx").css('display','flex');	
+	}
+
+		 if(FilterPhase7 == 'YES')
+	{
+	$(".vue_cfc_deluxe").css('display','flex');	
+	}
+	
+	
+	if(FilterPhase1 == 'NO')
+	{
+		 if(FilterPhase2 == 'NO')
+		{
+			  if(FilterPhase3 == 'NO')
+		     {
+				  if(FilterPhase4 == 'NO')
+		         {
+					  if(FilterPhase5 == 'NO')
+		            {
+						  if(FilterPhase6 == 'NO')
+		               {
+							  if(FilterPhase7 == 'NO')
+		                  {
+			$(".film-cards-list-item").css('display','flex');
+			              }
+			           }
+			        }
+                 }			
+		     }
+		}		
+	}
+}
+
+
+</script>
+<script>
+if (window.scPush) {
+  window.scPush("view_item_list", {"currency":"EGP","item_list_name":"Now showing","items":[{"item_id":"6ae0e91d46ad275a40045cd6","item_name":"Hope","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae081178c9a1575d101bfb2","item_name":"Naseeb","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae08203b033e61c5b094d72","item_name":"Sense and Sensibility","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ac0832f2b15818ab602aed2","item_name":"Wildwood","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ac08298052040e0850cec32","item_name":"Clayface","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ac07e294639d2ba880f6482","item_name":"Wala Kan Ala Albal","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ab6e85fd283fde2f00ff792","item_name":"Matloub Aelyan","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae118200fcf1d5c6304fc23","item_name":"Moscow Cairo","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae0817c6b528d40c20d8f42","item_name":"The Mongoose","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae107b84a35d2b58d049d32","item_name":"It Feeds","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ae106d395f10636f7084a24","item_name":"The Influencer Project","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ac08229fce95edaac0eb7c2","item_name":"Whalefall","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ac07f24383e1a17fc008cf2","item_name":"Other Mommy","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6ab2d8b47bf99f489d029f93","item_name":"Digger","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6abbfc11f0c83e50f60f01e2","item_name":"Verity","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6aadd19c1f0ca1dfba00cc92","item_name":"Heart of the Beast","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6a5edec9e47304a37704e2e2","item_name":"Resident Evil","item_brand":"Cairo Festival City","quantity":1},{"item_id":"6a7a7126428f76e9bd0b31e2","item_name":"Mahmoud Eltany","item_brand":"Cairo Festival City","quantity":1}]}, {"branch_name":"Cairo Festival City"});
+}
+</script>
+	
+   
+  <script>
+  
+  
+  
+  
+  const observer = lozad(); 
+  observer.observe();
+
+  $(document).ready(function () {
+	  
+	
+	  
+    $(window).on("scroll", function () {
+        if ($(document).scrollTop() >= 5) {
+            $("#main-nav").addClass('bg-dark').removeClass('bg-transparent');
+        }
+        else {
+            $("#main-nav").addClass('bg-transparent').removeClass('bg-dark');
+        }
+    })
+});
+	
+   function showAjaxLoading()
+   {
+	  $(".ajax-loader-block").css('display','block'); 
+   }
+    function hideAjaxLoadingAction()
+   {
+	 $(".ajax-loader-block").css('display','none');    
+   }
+    function hideAjaxLoading()
+   {
+	  setTimeout(hideAjaxLoadingAction, 1000); 
+   } 
+   function slideToScreen(screen_id)
+   {
+	   $("#login_area").css('display','none');
+	   $("#forgot_area").css('display','none');
+	   $("#create_account_area").css('display','none');
+       $("#"+screen_id).css('display','block');
+   }
+   
+      
+   function createUser()
+   {
+	  
+showAjaxLoading();
+	  
+	      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': 'REDACTED'
+        }
+		});
+		
+	var datastring = $("#demo-form").serialize();
+    $.ajax({
+    type: "POST",
+    url: "https://cfc.scenecinemas.com/customers/register",
+    data: datastring,
+    success: function(data) {
+		
+		hideAjaxLoading();
+		
+        if(data == 'er1')
+		{
+			alert('Please enter email address');
+			
+		}
+		else if(data == 'er2')
+		{
+			alert('Please enter your name');
+		}
+		else if(data == 'er3')
+		{
+			alert('Please enter your mobile phone number');
+		}
+		else if(data == 'er4')
+		{
+			alert('Please enter your password');
+		}
+		else if(data == 'er5')
+		{
+			alert('Please complete the google recaptcha.');
+		}
+		else if(data == 'er6')
+		{
+			alert('Please re-complete the google recaptcha.');
+			grecaptcha.reset();
+		}
+		else if(data == 'er7')
+		{
+			alert('The email address you entered is invalid');
+		}
+		else if(data == 'er8')
+		{
+			alert('The email address you entered is already associated with an account.');
+		}
+		else
+		{
+			getUserPanel();	
+			let Usermodal = bootstrap.Modal.getOrCreateInstance(document.getElementById('UserModal')) // Returns a Bootstrap modal instance
+			Usermodal.hide(); 
+		}
+		
+    },
+    error: function() {
+		hideAjaxLoading();
+        alert('error');
+    }
+});
+   }
+   
+   
+   
+   
+   function loginUser()
+   {
+	showAjaxLoading();
+	  
+	      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': 'REDACTED'
+        }
+		});  
+
+      var datastring = $("#login-form").serialize();
+
+$.ajax({
+    type: "POST",
+    url: "https://cfc.scenecinemas.com/customers/login",
+    data: datastring,
+    success: function(data) {
+		
+		hideAjaxLoading();
+		
+        if(data == 'er1')
+		{
+			alert('Please enter email address');
+			
+		}
+		else if(data == 'er4')
+		{
+			alert('Please enter your password');
+		}
+		else if(data == 'er9')
+		{
+			alert('These credentials do not match our records.');
+		}
+		else
+		{
+			getUserPanel();	
+			let Usermodal = bootstrap.Modal.getOrCreateInstance(document.getElementById('UserModal')) // Returns a Bootstrap modal instance
+			Usermodal.hide(); 	
+		}
+		
+    },
+    error: function() {
+		hideAjaxLoading();
+        alert('error');
+    }
+});
+	  
+   }
+   
+   function fogrotpasswordact()
+   {
+	  var user_email  = $("#fracc_email").val();
+	   if(user_email == '')
+	   {
+	     alert('Please enter email address');	   
+	   }
+	   else
+	   {
+		     showAjaxLoading();
+	  
+	      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': 'REDACTED'
+        }
+		}); 
+		
+		
+    var datastring = $("#demo-form-forgot").serialize();
+    $.ajax({
+    type: "POST",
+    url: "https://cfc.scenecinemas.com/customers/forgotpasswordaction",
+    data: datastring,
+    success: function(data) {
+		
+		hideAjaxLoading();
+		
+        if(data == 'er1')
+		{
+			alert('Please enter email address');
+			grecaptcha.reset();
+			
+		}
+        else if(data == 'er7')
+		{
+			alert('Please enter email address');
+			grecaptcha.reset();
+			
+		}
+		else if(data == 'er6')
+		{
+			alert('Please re-complete the google recaptcha.');
+			grecaptcha.reset();
+		}
+		else if(data == 'er88')
+		{
+			alert('The email address you entered is not associated with any account.');
+			grecaptcha.reset();
+		}
+		else if(data == 'er99')
+		{
+			alert('Please wait 10 mins before sending another password reset request');
+			grecaptcha.reset();
+		} 
+        else if(data == 'success')
+		{
+		  $("#forgot_area").html('Thank you! , You will receive an email with instructions on how to reset your password!');
+		}	
+    },
+    error: function() {
+		hideAjaxLoading();
+        alert('error');
+    }
+});
+
+
+	   }
+   }
+   
+      
+   
+      function getUserPanel()
+	   {
+		   
+	$.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': 'REDACTED'
+        }
+		}); 
+		
+		$.ajax({
+    type: "POST",
+    url: "https://cfc.scenecinemas.com/customers/login_bar",
+    success: function(data) {
+		 $("#loginAreaPass").html(data);
+    },
+    error: function() {
+    }
+});
+
+		
+	   }
+	   
+	    $( document ).ready(function() {
+			getUserPanel();
+			
+			
+		});
+   function backtoTop()
+			{
+			$("html, body").animate({scrollTop: 0}, 1000);	
+			}
+  </script>
+  
+  <script>
+// Get the button:
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
+    mybutton.style.visibility = "visible";
+  } else {
+    mybutton.style.visibility = "hidden";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+$("html, body").animate({scrollTop: 0}, 1000);
+} 
+</script>
+
+
+   </body>
+   
+</html>
+
+
+
+						
+						
+                   
