@@ -1,9 +1,8 @@
 name: monitor
 
 on:
-  # Switched on in Phase 5 (go live), after the manual checks pass.
-  # schedule:
-  #   - cron: "*/15 * * * *"  # UTC; GitHub may start runs 5-20+ minutes late
+  schedule:
+    - cron: "*/15 * * * *"  # UTC; GitHub may start runs 5-20+ minutes late
   workflow_dispatch:
     inputs:
       dry_run:
