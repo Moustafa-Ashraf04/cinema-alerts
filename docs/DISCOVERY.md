@@ -32,6 +32,18 @@ Cost per check is one request per branch for the homepage (shared by all watches
 - In the browser, Avengers: Doomsday was offered at Nile Cinema, Galaxy elManial and Premiere Point90, **not at Americana Plaza**, on 2026-11-04.
 - Fallback looked at: elCinema's Premiere IMAX page (`elcinema.com/en/theater/3101134/`) is readable, plain HTML with showtimes and elCinema booking links. But its date selector covers only **7 days ahead** (04–10 Nov), so it can't show December pre-sales. It's too late to be useful for pre-booking alerts.
 
+## GitHub runner probe (`probe.yml`, [run 41757507914](https://github.com/Moustafa-Ashraf04/cinema-alerts/actions/runs/41757507914))
+
+| Check | Result from GitHub |
+|---|---|
+| Scene CFC home | HTTP 200, 65784 bytes, movie links present |
+| Scene CFC Avengers page | HTTP 200, 54404 bytes, 23-12-2026 in the date strip |
+| Scene CFC fragment, 23-12-2026 | HTTP 200, 1282 bytes, `showtime-` links present |
+| Scene District 5 Avengers page | HTTP 200, 54250 bytes, 23-12-2026 in the date strip |
+| Premiere movie page | **HTTP 403**, 4555 bytes (Cloudflare blocks GitHub's servers, even for the plain HTML) |
+
+The Scene sizes match the local fetches byte for byte, so the content is the same from GitHub. Premiere is blocked from GitHub's servers as well as at the API.
+
 ## Vox Cinemas: parked
 
 `egy.voxcinemas.com` is behind Akamai Bot Manager. Every honest non-browser request was dropped (HTTP/2 reset or a 0-byte timeout, the homepage included). In a browser the showtimes are server-rendered `a.action.showtime[href^="/booking/"]`, with dates as `?d=YYYYMMDD`. Vox stays parked until a polite source turns up. elCinema doesn't list Vox.
