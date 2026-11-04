@@ -22,6 +22,8 @@ jobs:
             --data-urlencode "text=Cinema bot connected" \
             "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage")
           ok=$(jq -r '.ok' resp.json 2>/dev/null || echo unknown)
+          # Telegram's error description never contains the token.
+          desc=$(jq -r '.description // ""' resp.json 2>/dev/null)
           rm -f resp.json
-          echo "HTTP ${status}, ok=${ok}"
+          echo "HTTP ${status}, ok=${ok} ${desc}"
           [ "$status" = "200" ] && [ "$ok" = "true" ]
