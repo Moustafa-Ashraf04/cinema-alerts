@@ -1,10 +1,10 @@
 {
  "entries": {
   "avengers-doomsday|scene-cfc|2026-12-23": {
-   "errors": 2,
+   "errors": 3,
    "first_open": "2026-11-04T02:12:51+00:00",
    "last_error": "homepage: homepage has no Now Showing list",
-   "problem_alerted": false,
+   "problem_alerted": true,
    "showtimes": [
     {
      "format": "ScreenX",
@@ -37,10 +37,10 @@
    ]
   },
   "avengers-doomsday|scene-district5|2026-12-23": {
-   "errors": 2,
+   "errors": 3,
    "first_open": "2026-11-04T02:12:51+00:00",
    "last_error": "homepage: homepage has no Now Showing list",
-   "problem_alerted": false,
+   "problem_alerted": true,
    "showtimes": [
     {
      "format": "Standard & Deluxe",
@@ -73,10 +73,10 @@
    ]
   },
   "dune3|scene-cfc|2026-12-23": {
-   "errors": 2,
+   "errors": 3,
    "first_open": "2026-11-04T02:12:51+00:00",
    "last_error": "homepage: homepage has no Now Showing list",
-   "problem_alerted": false,
+   "problem_alerted": true,
    "showtimes": [
     {
      "format": "Standard",
@@ -115,10 +115,10 @@
    ]
   },
   "dune3|scene-district5|2026-12-23": {
-   "errors": 2,
+   "errors": 3,
    "first_open": "2026-11-04T02:12:51+00:00",
    "last_error": "homepage: homepage has no Now Showing list",
-   "problem_alerted": false,
+   "problem_alerted": true,
    "showtimes": [
     {
      "format": "IMAX",
@@ -164,7 +164,7 @@
   }
  },
  "keepalive": "2026-11-04T02:13:02Z",
- "last_check": "2026-11-04T02:20:56+00:00",
+ "last_check": "2026-11-04T02:21:19+00:00",
  "last_heartbeat": null,
  "next_watch_no": 1,
  "telegram_offset": 203713834,
