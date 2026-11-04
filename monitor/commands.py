@@ -237,7 +237,7 @@ def handle(text: str, state: dict, config, today: date) -> Reply | None:
     if cmd == "/status":
         entries = state["entries"]
         failing = [k for k, v in entries.items() if v.get("errors")]
-        lines = [f"Last check: {e(state.get('last_check') or 'never')} (UTC)",
+        lines = [f"Last saved check: {e(state.get('last_check') or 'never')} (UTC)",
                  f"Watches: {len(all_watches(state, config))}, checks: {len(entries)}, failing: {len(failing)}"]
         for k in failing[:10]:
             lines.append(f"• {e(k)}: {e(str(entries[k].get('last_error', ''))[:150])}")

@@ -71,7 +71,7 @@ def transition(entry: dict | None, result: CheckResult, *, notify_new: bool, err
                now: str) -> tuple[dict, list[Event]]:
     """Pure function: previous entry + this run's result -> new entry + events to announce."""
     e = copy.deepcopy(entry) if entry else {
-        "status": None, "showtimes": [], "first_open": None, "errors": 0, "problem_alerted": False, "last_ok": None,
+        "status": None, "showtimes": [], "first_open": None, "errors": 0, "problem_alerted": False,
     }
     events: list[Event] = []
 
@@ -88,7 +88,6 @@ def transition(entry: dict | None, result: CheckResult, *, notify_new: bool, err
     e["errors"] = 0
     e["problem_alerted"] = False
     e.pop("last_error", None)
-    e["last_ok"] = now
 
     bookable = result.bookable
     if result.status == Status.OPEN:
