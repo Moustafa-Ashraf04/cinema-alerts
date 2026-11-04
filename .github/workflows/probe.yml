@@ -1,0 +1,30 @@
+name: probe
+
+# Manual go/no-go check: can GitHub's runners fetch each provider's pages?
+# Prints only status, size and whether the OPEN marker is present.
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Probe Scene and Premiere
+        run: |
+          UA='cinema-alert-bot (personal use)'
+          probe() {  # name url marker
+            code=$(curl -sS -o body --max-time 20 -A "$UA" -w '%{http_code}' "$2" || echo 000)
+            size=$(wc -c < body 2>/dev/null || echo 0)
+            if grep -q "$3" body 2>/dev/null; then m=yes; else m=no; fi
+            echo "$1: HTTP $code, ${size} bytes, marker '$3' present: $m"
+            rm -f body; sleep 2
+          }
+          M=movie-details/avengers-doomsday-infinity-vision-sx-4dx.html
+          probe scene-cfc-home      https://cfc.scenecinemas.com/                                  'movie-details/'
+          probe scene-cfc-movie     "https://cfc.scenecinemas.com/$M"                              "id='data-23-12-2026'"
+          probe scene-cfc-23dec     "https://cfc.scenecinemas.com/$M?business_day=23-12-2026&ajax=1" 'scenecinemas.com/showtime-'
+          probe scene-d5-movie      "https://district5.scenecinemas.com/$M"                        "id='data-23-12-2026'"
+          probe premiere-movie      https://www.premiere-cinemas.com/en/movie-details/5180.855/1   'AVENGERS'
