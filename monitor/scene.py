@@ -1,7 +1,4 @@
-"""Scene Cinemas (cfc.scenecinemas.com, district5.scenecinemas.com).
-
-See docs/DISCOVERY.md for the evidence behind every selector here.
-"""
+"""Scene Cinemas (<branch>.scenecinemas.com). Evidence for every selector: docs/DISCOVERY.md."""
 
 from __future__ import annotations
 
@@ -11,15 +8,16 @@ from datetime import date, datetime
 
 from bs4 import BeautifulSoup
 
-from ..matching import title_matches
-from ..models import CheckResult, Cinema, Showtime, Status
-from .base import ParseError, Provider
-
-BRANCHES = {"cfc": "Cairo Festival City", "district5": "District 5"}
+from .models import CheckResult, Cinema, Showtime, Status
 
 TIME_RE = re.compile(r"^\d{1,2}:\d{2}\s?[AP]M$", re.I)
-FORMAT_GROUP_RE = re.compile(r"^ex_[a-z0-9]+_content$")
-FORMAT_LABEL_RE = re.compile(r"^ex_[a-z0-9]+$")
+FORMAT_GROUP_RE = re.compile(r"^ex_[a-z0-9]+_content$")  # e.g. ex_imax_content, ex_stand_content
+FORMAT_LABEL_RE = re.compile(r"^ex_[a-z0-9]+$")  # e.g. <span class="ex_imax">ScreenX</span>
+SHOWTIME_RE = re.compile(r"^https://([a-z0-9-]+)\.scenecinemas\.com/showtime-[0-9a-f]+$")
+
+
+class ParseError(Exception):
+    """The page is not one we recognise. Always reported as ERROR."""
 
 
 def base_url(branch: str) -> str:
@@ -39,8 +37,23 @@ def fragment_url(branch: str, slug: str, d: date) -> str:
     return f"{movie_url(branch, slug)}?business_day={d:%d-%m-%Y}&ajax=1"
 
 
+def normalize(text: str) -> str:
+    text = re.sub(r"\([^)]*\)", " ", text.lower())  # drop "(2D)" and similar
+    return re.sub(r"[^a-z0-9؀-ۿ]+", " ", text).strip()
+
+
+def title_matches(query: str, title: str, slug: str = "") -> bool:
+    """Every word typed must start a word of the title (or of the URL slug)."""
+    q = normalize(query).split()
+    for candidate in (title, slug.replace("-", " ").replace("_", " ")):
+        words = normalize(candidate).split()
+        if q and words and all(any(w.startswith(t) for w in words) for t in q):
+            return True
+    return False
+
+
 def parse_home(html: str, branch: str) -> dict[str, str]:
-    """Return {slug: title} for every film listed on the branch homepage."""
+    """{slug: title} for every film listed on the branch homepage."""
     if not html or not html.strip():
         raise ParseError("empty homepage")
     soup = BeautifulSoup(html, "html.parser")
@@ -59,7 +72,7 @@ def parse_home(html: str, branch: str) -> dict[str, str]:
 @dataclass
 class MoviePage:
     dates: set[date]
-    no_showtimes: bool  # the page's own "There is no showtimes" notice is visible
+    no_showtimes: bool  # the site's own "There is no showtimes" notice is visible
 
 
 def parse_movie_page(html: str) -> MoviePage:
@@ -73,18 +86,17 @@ def parse_movie_page(html: str) -> MoviePage:
         except ValueError:
             raise ParseError(f"unexpected date id '{li['id']}'")
     notice = soup.find("h1", string=re.compile(r"There is no showtimes", re.I))
-    visible_notice = False
+    visible = False
     if notice is not None:
-        container = notice.find_parent("div")
-        style = (container.get("style") or "").replace(" ", "").lower() if container else ""
-        visible_notice = "display:none" not in style
+        box = notice.find_parent("div")
+        visible = "display:none" not in ((box.get("style") or "") if box else "").replace(" ", "").lower()
     if dates and not soup.find(id="ShowtimesAjax"):
         raise ParseError("date list without a showtimes area")
-    if not dates and not visible_notice:
+    if not dates and not visible:
         raise ParseError("movie page has neither dates nor a no-showtimes notice")
-    if dates and visible_notice:
+    if dates and visible:
         raise ParseError("movie page shows dates and a no-showtimes notice at once")
-    return MoviePage(dates, visible_notice)
+    return MoviePage(dates, visible)
 
 
 def parse_fragment(html: str, branch: str) -> list[Showtime]:
@@ -92,54 +104,48 @@ def parse_fragment(html: str, branch: str) -> list[Showtime]:
     if not html or not html.strip():
         raise ParseError("empty showtimes fragment")
     soup = BeautifulSoup(html, "html.parser")
-    items = soup.select("div.program_item")
-    if not items:
+    if not soup.select("div.program_item"):
         raise ParseError("showtimes fragment not recognised")
-    link = re.compile(rf"^{re.escape(base_url(branch))}/showtime-[0-9a-f]+$")
     showtimes: list[Showtime] = []
-    for item in items:
-        place = item.select_one("div.branch")
-        if place is None or BRANCHES[branch].lower() not in place.get_text(" ", strip=True).lower():
+    for a in soup.select("div.program_item div.showtimes a"):
+        text = a.get_text(" ", strip=True)
+        if not TIME_RE.match(text):
+            continue
+        group = a.find_parent("div", class_=FORMAT_GROUP_RE)
+        label = group.find("span", class_=FORMAT_LABEL_RE) if group else None
+        fmt = label.get_text(" ", strip=True) if label else "Standard"
+        link = SHOWTIME_RE.match(a.get("href", ""))
+        if link and link.group(1) != branch:
             raise ParseError("showtimes fragment is for a different branch")
-        for a in item.select("div.showtimes a"):
-            text = a.get_text(" ", strip=True)
-            if not TIME_RE.match(text):
-                continue
-            # Each format is a <div class="ex_<kind>_content"> with a <span class="ex_<kind>"> label,
-            # e.g. ex_imax / "ScreenX", ex_stand / "Standard & Deluxe".
-            group = a.find_parent("div", class_=FORMAT_GROUP_RE)
-            label = group.find("span", class_=FORMAT_LABEL_RE) if group else None
-            fmt = label.get_text(" ", strip=True) if label else "Standard"
-            href = a.get("href", "")
-            if link.match(href):
-                showtimes.append(Showtime(text.upper(), fmt, href))
-            else:  # a time without a booking link: shown, but not bookable
-                showtimes.append(Showtime(text.upper(), fmt, "", sold_out=True))
+        # a time without a booking link is shown but not bookable
+        showtimes.append(Showtime(text.upper(), fmt, a["href"] if link else "", sold_out=not link))
     if not showtimes:
         raise ParseError("showtimes fragment has no times")
     return showtimes
 
 
-class SceneProvider(Provider):
-    name = "scene"
+class SceneProvider:
+    def __init__(self, fetcher):
+        self.fetcher = fetcher
 
     def check(self, cinema: Cinema, movie_query: str, dates: list[date]) -> dict[date, CheckResult]:
+        """OPEN, CLOSED or ERROR for each requested date."""
         branch = cinema.branch
 
-        def all_dates(status: Status, reason: str, **kw) -> dict[date, CheckResult]:
-            return {d: CheckResult(status, reason=reason, **kw) for d in dates}
+        def every_date(status: Status, reason: str) -> dict[date, CheckResult]:
+            return {d: CheckResult(status, reason=reason) for d in dates}
 
         home = self.fetcher.get(home_url(branch))
         if not home.ok:
-            return all_dates(Status.ERROR, f"homepage: {home.describe()}")
+            return every_date(Status.ERROR, f"homepage: {home.describe()}")
         try:
             movies = parse_home(home.text, branch)
         except ParseError as exc:
-            return all_dates(Status.ERROR, f"homepage: {exc}")
+            return every_date(Status.ERROR, f"homepage: {exc}")
 
-        matches = {slug: title for slug, title in movies.items() if title_matches(movie_query, title, slug)}
+        matches = {slug: t for slug, t in movies.items() if title_matches(movie_query, t, slug)}
         if not matches:
-            return all_dates(Status.CLOSED, "not listed at this branch yet")
+            return every_date(Status.CLOSED, "not listed at this branch yet")
         titles = sorted(set(matches.values()))
 
         showtimes: dict[date, list[Showtime]] = {d: [] for d in dates}
@@ -147,11 +153,9 @@ class SceneProvider(Provider):
         book_url: dict[date, str] = {}
         for slug in sorted(matches):
             page = self.fetcher.get(movie_url(branch, slug))
-            if not page.ok:
-                for d in dates:
-                    errors[d].append(f"{slug}: {page.describe()}")
-                continue
             try:
+                if not page.ok:
+                    raise ParseError(page.describe())
                 info = parse_movie_page(page.text)
             except ParseError as exc:
                 for d in dates:
@@ -159,12 +163,11 @@ class SceneProvider(Provider):
                 continue
             for d in dates:
                 if d not in info.dates:
-                    continue  # positive evidence: this date is not on sale for this page
+                    continue  # positive evidence: this date isn't on sale on this page
                 frag = self.fetcher.get(fragment_url(branch, slug, d))
-                if not frag.ok:
-                    errors[d].append(f"{slug} {d}: {frag.describe()}")
-                    continue
                 try:
+                    if not frag.ok:
+                        raise ParseError(frag.describe())
                     found = parse_fragment(frag.text, branch)
                 except ParseError as exc:
                     errors[d].append(f"{slug} {d}: {exc}")
@@ -175,12 +178,10 @@ class SceneProvider(Provider):
 
         results = {}
         for d in dates:
-            bookable = [s for s in showtimes[d] if not s.sold_out]
-            if bookable:
+            if any(not s.sold_out for s in showtimes[d]):
                 results[d] = CheckResult(Status.OPEN, showtimes[d], titles, book_url[d], partial=bool(errors[d]))
             elif errors[d]:
                 results[d] = CheckResult(Status.ERROR, titles=titles, reason="; ".join(errors[d]))
             else:
-                results[d] = CheckResult(Status.CLOSED, showtimes[d], titles, movie_url(branch, sorted(matches)[0]),
-                                         reason="no bookable showtimes on this date")
+                results[d] = CheckResult(Status.CLOSED, showtimes[d], titles, reason="no bookable showtimes on this date")
         return results

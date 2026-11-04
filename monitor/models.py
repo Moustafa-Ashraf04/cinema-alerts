@@ -41,42 +41,29 @@ class Cinema:
 
 @dataclass
 class Watch:
+    """One /watch from Telegram."""
     id: str
     movie: str
     dates: list[date]
     cinemas: list[str] = field(default_factory=list)  # empty = all enabled cinemas
-    formats: list[str] = field(default_factory=list)  # empty = any format
-    source: str = "config"  # "config" (watches.yaml) or "telegram"
 
     def to_dict(self) -> dict:
-        return {
-            "id": self.id,
-            "movie": self.movie,
-            "dates": [d.isoformat() for d in self.dates],
-            "cinemas": list(self.cinemas),
-            "formats": list(self.formats),
-        }
+        return {"id": self.id, "movie": self.movie, "dates": [d.isoformat() for d in self.dates],
+                "cinemas": list(self.cinemas)}
 
     @classmethod
-    def from_dict(cls, d: dict, source: str = "telegram") -> "Watch":
-        return cls(
-            id=d["id"],
-            movie=d["movie"],
-            dates=[date.fromisoformat(x) for x in d.get("dates", [])],
-            cinemas=list(d.get("cinemas", [])),
-            formats=list(d.get("formats", [])),
-            source=source,
-        )
+    def from_dict(cls, d: dict) -> "Watch":
+        return cls(d["id"], d["movie"], [date.fromisoformat(x) for x in d.get("dates", [])], list(d.get("cinemas", [])))
 
 
 @dataclass
 class CheckResult:
     status: Status
     showtimes: list[Showtime] = field(default_factory=list)
-    titles: list[str] = field(default_factory=list)  # titles the query matched
+    titles: list[str] = field(default_factory=list)  # titles the typed name matched
     url: str = ""  # page to open for booking
     reason: str = ""  # why CLOSED or ERROR
-    partial: bool = False  # OPEN, but some of the movie's pages failed
+    partial: bool = False  # OPEN, but some of the film's pages failed
 
     @property
     def bookable(self) -> list[Showtime]:

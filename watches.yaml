@@ -1,6 +1,5 @@
-# Cinema alert bot settings.
-# Most of the time you add movies from Telegram with /watch (send /help to the bot).
-# You can also list watches here. After editing, commit the file on GitHub.
+# Settings and cinemas. Movies and dates are NOT set here:
+# send them to the bot in Telegram, e.g. /watch dune 23 Dec (send /help for more).
 
 settings:
   timezone: Africa/Cairo
@@ -8,7 +7,7 @@ settings:
   error_alert_after: 3       # failed runs in a row before a problem alert
   notify_new_showtimes: true # also alert when an open movie gets new showtimes
 
-cinemas:
+cinemas:                     # branch = the part before .scenecinemas.com
   - id: scene-cfc
     provider: scene
     branch: cfc
@@ -17,24 +16,3 @@ cinemas:
     provider: scene
     branch: district5
     name: Scene District 5
-  # Parked: these sites block the bot (see docs/DISCOVERY.md). Leave enabled: false.
-  - id: premiere-americana
-    provider: premiere
-    branch: americana-plaza
-    name: Premiere IMAX Americana Plaza
-    enabled: false
-  - id: vox-almaza
-    provider: vox
-    branch: city-centre-almaza
-    name: Vox City Centre Almaza
-    enabled: false
-
-watches:
-  - id: dune3
-    movie: Dune Part Three
-    dates: ["2026-12-23"]
-    # cinemas: [scene-cfc]     # optional; leave out for all cinemas
-    # formats: [IMAX]          # optional filter
-  - id: avengers-doomsday
-    movie: Avengers Doomsday
-    dates: ["2026-12-23"]

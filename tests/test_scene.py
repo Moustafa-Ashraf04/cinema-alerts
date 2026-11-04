@@ -4,9 +4,8 @@ import pytest
 from conftest import DictFetcher, read
 
 from monitor.models import Cinema, Status
-from monitor.providers.base import ParseError
-from monitor.providers.scene import (SceneProvider, fragment_url, home_url, movie_url, parse_fragment, parse_home,
-                                     parse_movie_page)
+from monitor.scene import (ParseError, SceneProvider, fragment_url, home_url, movie_url, parse_fragment, parse_home,
+                           parse_movie_page, title_matches)
 
 CFC = Cinema("scene-cfc", "scene", "cfc", "Scene Cairo Festival City")
 SLUG = "avengers-doomsday-infinity-vision-sx-4dx"
@@ -72,6 +71,15 @@ def test_unrecognised_fragment_is_a_parse_error(html):
 def test_fragment_for_another_branch_is_a_parse_error():
     with pytest.raises(ParseError):
         parse_fragment(OPEN_23, "district5")
+
+
+@pytest.mark.parametrize("query, ok", [
+    ("dune", True), ("Dune part 3", False), ("dune part three", True), ("avengers", True),
+    ("spider man", False), ("doomsday infinity", True), ("x", False),
+])
+def test_title_matching(query, ok):
+    titles = {"dune-part-three": "Dune: Part Three", "avengers-doomsday-infinity-vision-sx-4dx": "Avengers: Doomsday"}
+    assert any(title_matches(query, t, slug) for slug, t in titles.items()) is ok
 
 
 def test_truncated_and_unknown_movie_pages_are_parse_errors():
